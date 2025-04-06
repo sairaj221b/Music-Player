@@ -1,0 +1,105 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 25%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 63% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 26%;
+    --input: 240 5% 20%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  .bg-gradient-dynamic {
+    @apply transition-colors duration-1000 ease-in-out;
+    background-size: 200% 200%;
+    animation: bg-shift 15s ease infinite;
+  }
+
+  .song-list-item {
+    @apply transition-all duration-200 hover:bg-secondary/50 rounded-md px-3 py-2;
+  }
+
+  .progress-bar {
+    @apply h-1 bg-muted overflow-hidden rounded-full;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-primary transition-all ease-linear duration-100;
+  }
+
+  .player-container {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .song-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .song-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .song-exit {
+    opacity: 1;
+  }
+
+  .song-exit-active {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 300ms, transform 300ms;
+  }
+}
